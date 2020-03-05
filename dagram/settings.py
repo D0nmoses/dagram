@@ -37,7 +37,8 @@ LOGIN_REDIRECT_URL = reverse_lazy('home')
 # Application definition
 
 INSTALLED_APPS = [
-    'gallery.apps.GalleryConfig',
+    'gallery',
+    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
