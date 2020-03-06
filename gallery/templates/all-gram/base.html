@@ -1,10 +1,32 @@
+{% load bootstrap3 %}
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+
+    {% if title %}
+    <title>Dagram - {{title}}</title>
+    {% else %}
+      <title> Dagram </title>
+    {% endif %}
+
+    {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+    {% endblock %}
+
 </head>
 <body>
+    {% include "navbar.html" %}
+
+    {% block content %}{%endblock%}
+
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+    {% endblock %}
 
 </body>
 </html>
