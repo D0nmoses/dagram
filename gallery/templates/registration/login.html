@@ -1,4 +1,4 @@
-{%extends "registration/base.html"%}
+{%extends "../django_registration/base.html"%}
 {% load bootstrap3 %}
 {% block content %}
 <div class="container">
@@ -25,7 +25,6 @@
             </div>
             <div class="form-group">
               <p>Don't have an account? Sign Up</p>
-              <button type="button" class="btn btn-primary" ><a href = "{%url 'accounts/register/' %}">Sign Up</a></button>
             </div>
 
 

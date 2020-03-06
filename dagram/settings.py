@@ -31,8 +31,6 @@ ALLOWED_HOSTS = []
 
 # Login redirect routes
 
-LOGIN_URL = reverse_lazy('login')
-LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 # Application definition
 
