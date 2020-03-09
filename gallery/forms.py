@@ -2,7 +2,7 @@ from django import forms
 from .models import Post, Comment
 
 
-class NewsPostForm(forms.ModelForm):
+class NewPostForm(forms.ModelForm):
     '''	
     Class to create a form for an authenticated user to create Post	
     '''

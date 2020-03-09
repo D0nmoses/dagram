@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Follow, Like, Comment, Post, Profile
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import NewsPostForm
+from .forms import NewPostForm, NewCommentForm
 
 # Create your views here.
 
@@ -64,7 +64,7 @@ def new_post(request):
 
     if request.method == 'POST':
 
-        form = NewsPostForm(request.POST, request.FILES)
+        form = NewPostForm(request.POST, request.FILES)
 
         if form.is_valid:
 
@@ -80,8 +80,41 @@ def new_post(request):
 
     else:
 
-        form = NewsPostForm()
+        form = NewPostForm()
 
     title = 'Create Post'
 
     return render(request,'all_gram/new_post.html', {"form":form})
+
+
+@login_required(login_url='accounts/login/')
+def new_comment(request, id):
+    '''
+    View function to display a form for creating a comment on a post
+    '''
+    current_user = request.user
+
+    current_post = Post.objects.get(id=id)
+
+    if request.method == 'POST':
+
+        form = NewCommentForm(request.POST)
+
+        if form.is_valid:
+            comment = form.save(commit=False)
+
+            comment.user = current_user
+
+            comment.post = current_post
+
+            comment.save()
+
+            return redirect(home, current_post.id)
+
+    else:
+
+        form = NewCommentForm()
+
+    title = f'Comment {current_post.user.username}\'s Post'
+
+    return render(request, 'all_gram/new-comment.html', {"title": title, "form": form, "current_post": current_post})
