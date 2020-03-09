@@ -105,30 +105,39 @@ class Post(models.Model):
         ordering = ['-post_date']
 
     def save_post(self):
-        '''
-        Method to save a post to the database
-        '''
+
         self.save()
 
     @classmethod
     def get_posts(cls):
-        '''
-        Function that gets all the posts in the database
-        Returns:
-            posts : list of all Post objects from the database
-        '''
+
         posts = Post.objects.all()
 
         return posts
 
     @classmethod
     def get_profile_posts(cls, profile_id):
-        '''
-        Function that gets all the posts from a specific profile
-        Returns:
-            profile_posts : list of all the posts in a specific profile
-        '''
+
         profile_posts = Post.objects.filter(profile=profile_id).all()
 
         return profile_posts
+
+
+class Follow(models.Model):
+    '''	
+    Class that store a User and Profile follow status	
+    '''
+    user = models.ForeignKey(User)
+
+    profile = models.ForeignKey(Profile)
+
+    def __str__(self):
+        return self.user.username
+
+    @classmethod
+    def get_following(cls,user_id):
+
+        following = Follow.objects.filter(user=user_id).all()
+
+        return following
 
