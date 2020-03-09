@@ -45,5 +45,5 @@ $ heroku config:set DJANGO_SECRET_KEY=os.config('SECRET_KEY')
 
 We use [Git](https://git-scm.com/) for versioning. 
 
-## COdebeat Grade
+## Codebeat Grade
 
