@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Follow, Like, Comment, Post, Profile
 from django.core.exceptions import ObjectDoesNotExist
+from .forms import NewsPostForm
 
 # Create your views here.
 
