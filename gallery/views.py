@@ -1,4 +1,4 @@
-from django.http import Http404,
+from django.http import Http404,HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Follow, Like, Comment, Post, Profile
@@ -50,3 +50,37 @@ def profile(request,id):
 
     except ObjectDoesNotExist:
         raise Http404()
+
+
+@login_required(login_url='/accounts/login')
+def new_post(request):
+    '''	
+    View function to display a form for creating a post to a logged in authenticated user 	
+    '''
+    current_user = request.user
+
+    current_profile = current_user.profile
+
+    if request.method == 'POST':
+
+        form = NewsPostForm(request.POST, request.FILES)
+
+        if form.is_valid:
+
+            post = form.save(commit=False)
+
+            post.user = current_user
+
+            post.profile = current_profile
+
+            post.save()
+
+            return redirect(profile, current_user.id)
+
+    else:
+
+        form = NewsPostForm()
+
+    title = 'Create Post'
+
+    return render(request,'all-posts/new-post.html', {"form":form})
