@@ -15,7 +15,7 @@ class Profile(models.Model):
 
     bio = models.TextField(blank=True)
 
-    profile_pic = models.ImageField(upload_to="profile-pic/", blank=True, default='default-no-profile-pic.jpg')
+    profile_pic = models.ImageField(upload_to="profile-pic/", blank=True, default='/profile-pic/default-no-profile-pic.jpg')
 
     def __str__(self):
 

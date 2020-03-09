@@ -85,3 +85,43 @@ class TagTestClass(TestCase):
         existing_tags = Tag.objects.all()
 
         self.assertTrue(len(gotten_tags) == len(existing_tags))
+
+
+class PostTestClass(TestCase):
+    '''	
+    Test case for the Post class	
+    '''
+    def setUp(self):
+
+        # Create a Post instance
+        self.new_post = Post(caption='Check out my killer abs')
+
+    def test_instance(self):
+
+        self.assertTrue(isinstance(self.new_post, Post))
+
+    def test_get_posts(self):
+
+        gotten_posts = Post.get_posts()
+
+        posts = Post.objects.all()
+
+        self.assertTrue(len(gotten_posts) == len(posts))
+
+    def test_get_profile_posts(self):
+
+        self.don = User(username="don")
+        self.don.save()
+
+        self.dan = User(username="dan")
+        self.dan.save()
+
+        self.test_profile = Profile(user=self.dan,bio="Test Profile")
+
+        self.test_post = Post(user=self.dan,caption="Test post here")
+
+        gotten_profile = Post.get_profile_posts(self.dan.id)
+
+        profiles = Post.objects.all()
+
+        self.assertTrue(len(gotten_profile) == len(profiles))

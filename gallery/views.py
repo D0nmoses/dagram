@@ -47,7 +47,7 @@ def profile(request,id):
 
         posts = Post.objects.filter(user=current_user.id)
 
-        return render(request, 'all_gram/my_profile.html', {"title":title,"current_user":current_user,"posts":posts})
+        return render(request, 'all_gram/my_profile.html', {"title":title,"single_profile":single_profile,"current_user":current_user,"posts":posts})
 
     except ObjectDoesNotExist:
         raise Http404()
