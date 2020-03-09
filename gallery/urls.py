@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     re_path(r'^$', views.home, name='home'),
-    # re_path(r'^profile/(\d+)', views.profile, name="profile"),
+    re_path(r'^profile/(\d+)', views.profile, name="profile"),
     re_path(r'^create/post', views.new_post, name="new-post"),
     # re_path(r'^follow/(\d+)', views.follow, name="follow"),
     # re_path(r'^create/comment(\d+)', views.comment, name="comment" ),

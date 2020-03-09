@@ -47,7 +47,7 @@ def profile(request,id):
 
         posts = Post.objects.filter(user=current_user.id)
 
-        return render(request, 'all-posts/my-profile.html', {"title":title,"current_user":current_user,"posts":posts})
+        return render(request, 'all_gram/my_profile.html', {"title":title,"current_user":current_user,"posts":posts})
 
     except ObjectDoesNotExist:
         raise Http404()
@@ -84,4 +84,4 @@ def new_post(request):
 
     title = 'Create Post'
 
-    return render(request,'all-posts/new-post.html', {"form":form})
+    return render(request,'all_gram/new_post.html', {"form":form})

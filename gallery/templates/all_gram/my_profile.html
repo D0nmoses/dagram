@@ -1,0 +1,23 @@
+{% extends 'all_gram/base.html' %}
+{% load bootstrap3 %]
+{% load static %}
+{% block content %}
+{{ block.super}}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src={{current_user.Profile.profile_pic.url}} alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{current_user.username}}</h4>
+                        <small><cite>{{current_user.bio}}</cite></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
