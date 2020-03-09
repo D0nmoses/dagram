@@ -41,3 +41,47 @@ class ProfileTestClass(TestCase):
         profiles = Profile.objects.all()
 
         self.assertTrue( len(gotten_profiles) < len(profiles))
+
+
+class TagTestClass(TestCase):
+    '''	
+    Test case for Tag class	
+    '''
+
+    # Set Up method
+    def setUp(self):
+
+        # Create a Tag instance
+        self.new_tag = Tag(name='Mombasa')
+
+    def test_instance(self):
+
+        self.assertTrue(isinstance(self.new_tag, Tag))
+
+    def test_save_tag(self):
+
+        self.new_tag.save_tag()
+
+        gotten_tags = Tag.objects.all()
+
+        self.assertTrue(len(gotten_tags) > 0)
+
+    def test_delete_tag(self):
+
+        self.new_tag.save_tag()
+
+        gotten_tags = Tag.objects.all()
+
+        self.new_tag.delete_tag()
+
+        self.assertTrue(len(gotten_tags) == 0)
+
+    def test_get_tags(self):
+
+        self.new_tag.save_tag()
+
+        gotten_tags = Tag.get_tags()
+
+        existing_tags = Tag.objects.all()
+
+        self.assertTrue(len(gotten_tags) == len(existing_tags))
