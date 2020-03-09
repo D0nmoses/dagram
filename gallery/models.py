@@ -141,3 +141,23 @@ class Follow(models.Model):
 
         return following
 
+
+class Comment(models.Model):
+    '''	
+    Class that defines a Comment on a Post	
+    '''
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+
+    comment_content = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    @classmethod
+    def get_post_comments(cls, post_id):
+
+        post_comments = Comment.objects.filter(post=post_id)
+
+        return post_comments
