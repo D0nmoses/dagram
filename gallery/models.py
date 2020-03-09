@@ -127,9 +127,9 @@ class Follow(models.Model):
     '''	
     Class that store a User and Profile follow status	
     '''
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    profile = models.ForeignKey(Profile)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
