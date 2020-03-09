@@ -91,7 +91,7 @@ class Post(models.Model):
 
     post_date = models.DateTimeField(auto_now_add=True)
 
-    image = models.ImageField(upload_to="posts/")
+    image = models.ImageField(upload_to="uploads/")
 
     caption = models.TextField(blank=True)
 
@@ -103,4 +103,32 @@ class Post(models.Model):
     class Meta:
 
         ordering = ['-post_date']
+
+    def save_post(self):
+        '''
+        Method to save a post to the database
+        '''
+        self.save()
+
+    @classmethod
+    def get_posts(cls):
+        '''
+        Function that gets all the posts in the database
+        Returns:
+            posts : list of all Post objects from the database
+        '''
+        posts = Post.objects.all()
+
+        return posts
+
+    @classmethod
+    def get_profile_posts(cls, profile_id):
+        '''
+        Function that gets all the posts from a specific profile
+        Returns:
+            profile_posts : list of all the posts in a specific profile
+        '''
+        profile_posts = Post.objects.filter(profile=profile_id).all()
+
+        return profile_posts
 
