@@ -67,24 +67,40 @@ class Tag(models.Model):
         return self.name
 
     def save_tag(self):
-        '''	
-        Method to save a new tag to the database	
-        '''
+
         self.save()
 
     def delete_tag(self):
-        '''	
-        Method to delete a tag from the database	
-        '''
+
         self.delete()
 
     @classmethod
     def get_tags(cls):
-        '''	
-        Method that gets all tags from the database	
-        Returns:	
-            gotten_tags : list of tag objects from the database	
-        '''
+
         gotten_tags = Tag.objects.all()
 
         return gotten_tags
+
+class Post(models.Model):
+    '''	
+    Class that defines a Post made by a User on their Profile	
+    '''
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    post_date = models.DateTimeField(auto_now_add=True)
+
+    image = models.ImageField(upload_to="posts/")
+
+    caption = models.TextField(blank=True)
+
+    tags = models.ManyToManyField(Tag, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+
+        ordering = ['-post_date']
+
