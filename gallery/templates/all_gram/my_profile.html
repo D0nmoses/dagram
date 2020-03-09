@@ -19,6 +19,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="container" id="image-container">
+
+    {% for post in posts %}
+
+        <a href="{% url 'imageDetail' img.id %}">
+            <div class="panel pic-preview">
+                <div class="panel-body panel-body-preview">
+                    <img class="image-preview" src="{{post.image.url}}" alt="{{post.id}}"/>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
     </div>
 {% endblock %}
