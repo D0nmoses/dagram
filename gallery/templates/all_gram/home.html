@@ -1,4 +1,4 @@
-{% extends base.hml %}
+{% extends 'all_gram/base.html' %}
 {% load bootstrap3 %]
 {% load static %}
 {% block content %}
@@ -37,22 +37,22 @@
                       <button type="button" class="btn btn-info pull-right">New Comment</button>
                       <div class="clearfix"></div>
                       <hr>
-                      {% for comment in comments %}
-                      <ul class="media-list">
-                          <li class="media">
-                              <a href="#" class="pull-left">
-                                  <img src= alt="" class="img-circle">
-                              </a>
-                              <div class="media-body">
+<!--                      {% for comment in comments %}-->
+<!--                      <ul class="media-list">-->
+<!--                          <li class="media">-->
+<!--                              <a href="#" class="pull-left">-->
+<!--                                  <img src= alt="" class="img-circle">-->
+<!--                              </a>-->
+<!--                              <div class="media-body">-->
 
-                                  <strong class="text-success">{{comment.user.username}}</strong>
-                                  <p>
-                                      {{comment.comment_content}}
-                                  </p>
-                              </div>
-                          </li>
-                        <ul>
-                          {%endfor%}
+<!--                                  <strong class="text-success">{{comment.user.username}}</strong>-->
+<!--                                  <p>-->
+<!--                                      {{comment.comment_content}}-->
+<!--                                  </p>-->
+<!--                              </div>-->
+<!--                          </li>-->
+<!--                        <ul>-->
+<!--                          {%endfor%}-->
 
           </div>
 
