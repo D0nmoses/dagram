@@ -9,7 +9,7 @@ urlpatterns=[
     re_path(r'^create/post', views.new_post, name="new-post"),
     re_path(r'^follow/(\d+)', views.follow, name="follow"),
     re_path(r'^create/comment(\d+)', views.new_comment, name="comment"),
-    # re_path(r'^like/(\d+)', views.like, name="like"),
+    re_path(r'^like/(\d+)', views.like, name="like"),
     re_path(r'^post/(\d+)', views.post, name="post"),
 
 ]

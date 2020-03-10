@@ -173,4 +173,19 @@ def post(request,id):
     except ObjectDoesNotExist:
         raise Http404()
 
-    return render(request, 'all-posts/post.html', {"title":title, "post":current_post,"comments":comments,"likes":likes,"like":like })
+    return render(request, 'all_gram/post.html', {"title":title, "post":current_post,"comments":comments,"likes":likes,"like":like })
+
+@login_required(login_url='/accounts/login')
+def like(request,id):
+    '''	
+    View function add a like to a post the current user has liked	
+    '''
+    current_user = request.user
+
+    current_post = Post.objects.get(id=id)
+
+    like = Like(user=current_user,post=current_post,likes_number=1)
+
+    like.save()
+
+    return redirect(post,current_post.id)
