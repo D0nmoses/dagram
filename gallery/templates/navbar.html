@@ -12,24 +12,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block styles %}
+
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/navbar.css'%}">
+        <script src="https://use.fontawesome.com/80caa23151.js"></script>
+
+    {% endblock %}
 </head>
 <body>
-  <div class="navbar navbar-dark bg-primary">
-    <div class="container-fluid"></div>
-    <a class="navbar-brand" href="{% url 'home' %}">Dagram</a>
+    {% if user.is_authenticated %}
 
-		<ul class="navbar-nav mt-2 mt-md-0">
-			<li class="nav-item active">
-				<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Profile</a>
+        <nav class="navbar navbar-inverse">
 
 
-		</ul>
-	</div>
+            <div class="container-fluid">
+
+                <div class="container">
+
+                    <div class="navbar-header">
+
+                        <a href="{% url 'home' %}" class="navbar-brand siteIcon">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="{% url 'home'%}" class="navbar-brand siteName">DaGram</a>
+
+                    </div>
+
+                    <div class="navbar-right">
+
+
+                        <a href="{% url 'profile' user.id%}" class="userIcon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </a>
+
+                        <a href="/logout" class="signOut">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
 
 
 
+    {% endif %}
 </body>
 </html>
