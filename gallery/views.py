@@ -122,7 +122,7 @@ def new_comment(request, id):
 @login_required(login_url='/accounts/login')
 def follow(request,id):
     '''	
-    View function to add a profile to the current user's timeline	
+    View function to add a profile to the current user's follow list
     '''
     current_user = request.user
 

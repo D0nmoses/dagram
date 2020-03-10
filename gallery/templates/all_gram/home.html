@@ -7,73 +7,70 @@
     <div class="row">
     <a href = "{% url 'new-post' %}"><button class="btn btn-primary btn-lg btn-block">New Post</button></a>
 </div>
-<div class="row">
-  {% for post in posts %}
-  <!-- Grid column -->
-  <div class="col-lg-4 col-md-12 mb-4">
 
-    <!--Modal: Name-->
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
+    <div class="container">
 
-        <!--Content-->
-        <div class="modal-content">
+        {%if following_posts%}
 
-          <!--Body-->
-          <div class="modal-body mb-0 p-0">
+        <div class="row profileRow">
 
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="{{ post.image.url }}"
-                allowfullscreen></iframe>
-              <h4>Caption:</h4><p> {{ post.caption }}</p>
+            {%for follow in following_posts%}
 
-            </div>
+                <!-- Profile Div -->
 
-            <div class="col-md-6 col-md-offset-2 col-sm-12">
-              <div class="comment-wrapper">
-              <div class="panel panel-info">
-                  <div class="panel-heading">
-                      Comment panel
-                  </div>
-                  <div class="panel-body">
+                <div class="col-md-10 col-lg-10">
 
-                      <button type="button" class="btn btn-info pull-right">New Comment</button>
-                      <div class="clearfix"></div>
-                      <hr>
-<!--                      {% for comment in comments %}-->
-<!--                      <ul class="media-list">-->
-<!--                          <li class="media">-->
-<!--                              <a href="#" class="pull-left">-->
-<!--                                  <img src= alt="" class="img-circle">-->
-<!--                              </a>-->
-<!--                              <div class="media-body">-->
+                    <div class="panel panel-default">
 
-<!--                                  <strong class="text-success">{{comment.user.username}}</strong>-->
-<!--                                  <p>-->
-<!--                                      {{comment.comment_content}}-->
-<!--                                  </p>-->
-<!--                              </div>-->
-<!--                          </li>-->
-<!--                        <ul>-->
-<!--                          {%endfor%}-->
+                        <div class="panel-heading">
 
-          </div>
+                            <img src="{{follow.profile.profile_pic.url}}" alt="{{follow.profile.user.username}}" class="img-responsive profilePicture">
 
-            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                            <h6 class="username">
+                                {{follow.profile.user.username}}
+                            </h6>
 
-          </div>
+                            <h6 class="timeSince">
+                                {{follow.post_date | timesince}} ago
+                            </h6>
+
+                        </div>
+
+                        <div class="panel-body">
+
+                            <a href="{%url 'post' follow.id%}">
+
+                                <img src="{{follow.image.url}}" alt="{{follow.caption}}" class="img-responsive postImage">
+
+                                <h5 class="text-center">
+                                    {{follow.caption}}
+                                </h5>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
 
         </div>
-        <!--/.Content-->
 
-      </div>
+
+        {%else%}
+
+            <h2 class="text-center">
+                You are Not Following Anyone
+            </h2>
+
+        {%endif%}
+
+
     </div>
-    <!--Modal: Name-->
-
-    <a><img class="img-fluid z-depth-1" src={{post.image.url}} alt="video"
-        data-toggle="modal" ></a>
-  {% endfor %}
-  </div>
-</div>
 
 {% endblock %}
+
+
+
