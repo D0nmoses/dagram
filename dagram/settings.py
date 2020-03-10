@@ -34,6 +34,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Login redirect routes
 
+LOGOUT_REDIRECT_URL = 'home'
+
 
 # Application definition
 
