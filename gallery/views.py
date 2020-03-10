@@ -136,7 +136,7 @@ def new_comment(request, id):
 
     title = f'Comment {current_post.user.username}\'s Post'
 
-    return render(request, 'all_gram/new-comment.html', {"title": title, "form": form, "current_post": current_post})
+    return render(request, 'all_gram/new_comment.html', {"title": title, "form": form, "current_post": current_post})
 
 @login_required(login_url='/accounts/login')
 def follow(request,id):

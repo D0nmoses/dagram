@@ -11,6 +11,9 @@ A Django based web application looking to replicate instagram functionalities
 - Procfile for running gunicorn with New Relic's Python agent.
 - PostgreSQL database support with psycopg2.
 
+## Known Bugs
+Comment functionality not working
+
 ## Environment Variables
 ```SECRET_KEY=XXX
 DEBUG=True
