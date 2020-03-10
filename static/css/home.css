@@ -1,15 +1,21 @@
-.comment-wrapper .panel-body {
-    max-height:650px;
-    overflow:auto;
+div.row.profileRow {
+    margin-left: 12em;
+    margin-right: 5em;
+    display: block;
+}
+img.img-responsive.profilePicture{
+    border-radius: 100%;
+    height: 6vh;
+    float: left;
 }
 
-.comment-wrapper .media-list .media img {
-    width:64px;
-    height:64px;
-    border:2px solid #e5e7e8;
+h6.username {
+    margin-left: 5em;
 }
 
-.comment-wrapper .media-list .media {
-    border-bottom:1px dashed #efefef;
-    margin-bottom:25px;
+a.follow {
+    margin-left: 9em;
+}
+a.follow:hover {
+    text-decoration: none;
 }
