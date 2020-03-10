@@ -118,3 +118,18 @@ def new_comment(request, id):
     title = f'Comment {current_post.user.username}\'s Post'
 
     return render(request, 'all_gram/new-comment.html', {"title": title, "form": form, "current_post": current_post})
+
+@login_required(login_url='/accounts/login')
+def follow(request,id):
+    '''	
+    View function to add a profile to the current user's timeline	
+    '''
+    current_user = request.user
+
+    follow_profile = Profile.objects.get(id=id)
+
+    following = Follow(user=current_user, profile=follow_profile)
+
+    following.save()
+
+    return redirect(home)
