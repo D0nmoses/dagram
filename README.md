@@ -25,6 +25,9 @@ MODE='prod'
 ALLOWED_HOSTS='.localhost','.herokuapp.com','.127.0.0.1'
 DISABLE_COLLECTSTATIC=1
 ```
+## Entity Relationship Diagram
+[ERD]("https://drive.google.com/file/d/1YUGgNtSgj4vQFx1laGGrxr0JrLAAQGyw/view?usp=sharing")
+
 ## Deployment
 
 It is possible to deploy to Heroku or to your own server.
